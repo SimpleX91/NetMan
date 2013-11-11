@@ -1,7 +1,7 @@
 #ifndef BASESOCKET_H
 #define BASESOCKET_H
 
-#include "NetworkManager/BSDWinDiff.h"
+#include "BSDWinDiff.h"
 #include "NonCopyable.h"
 
 namespace netman

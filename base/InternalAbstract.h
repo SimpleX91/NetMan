@@ -2,8 +2,8 @@
 #define INTERNALABSTRACT_H
 
 #include "NonCopyable.h"
-#include "NetworkManager/ExternalAbstract.h"
-#include "NetworkManager/BSDWinDiff.h"
+#include "ExternalAbstract.h"
+#include "BSDWinDiff.h"
 #include <condition_variable>
 #include <mutex>
 

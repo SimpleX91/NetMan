@@ -3,7 +3,7 @@
 
 #include "BaseSocket.h"
 #include "SocketAddress.h"
-#include "NetworkManager/ByteArray.h"
+#include "ByteArray.h"
 
 namespace netman
 {

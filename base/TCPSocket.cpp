@@ -1,8 +1,8 @@
 #include "TCPSocket.h"
 #include "SocketAddress.h"
-#include "NetworkManager/BSDWinDiff.h"
-#include "NetworkManager/Exception.h"
-#include "NetworkManager/ByteArray.h"
+#include "BSDWinDiff.h"
+#include "Exception.h"
+#include "ByteArray.h"
 
 namespace netman
 {

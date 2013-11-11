@@ -1,6 +1,6 @@
 #include "TCPInternalConnection.h"
-#include "NetworkManager/HostAddress.h"
-#include "NetworkManager/ByteArray.h"
+#include "HostAddress.h"
+#include "ByteArray.h"
 #include "SocketAddress.h"
 #include "SocketAddressBuilder.h"
 #include "assert.h"

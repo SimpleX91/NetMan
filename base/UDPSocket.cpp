@@ -1,6 +1,6 @@
 #include "UDPSocket.h"
-#include "NetworkManager/BSDWinDiff.h"
-#include "NetworkManager/Exception.h"
+#include "BSDWinDiff.h"
+#include "Exception.h"
 
 namespace netman
 {

@@ -1,7 +1,7 @@
-#include "NetworkManager/Server.h"
+#include "Server.h"
 
-#include "NetworkManager/ByteArray.h"
-#include "NetworkManager/Connection.h"
+#include "ByteArray.h"
+#include "Connection.h"
 
 #include "InternalConnection.h"
 #include "TCPInternalConnection.h"

@@ -1,6 +1,6 @@
 #include "TCPServer.h"
 #include "TCPSocket.h"
-#include "NetworkManager/Exception.h"
+#include "Exception.h"
 
 namespace netman
 {

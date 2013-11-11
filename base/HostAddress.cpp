@@ -1,4 +1,4 @@
-#include "NetworkManager/HostAddress.h"
+#include "HostAddress.h"
 #include <string>
 
 namespace netman

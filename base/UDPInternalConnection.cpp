@@ -1,6 +1,6 @@
 #include "UDPInternalConnection.h"
-#include "NetworkManager/ByteArray.h"
-#include "NetworkManager/HostAddress.h"
+#include "ByteArray.h"
+#include "HostAddress.h"
 #include "SocketAddress.h"
 #include "SocketAddressBuilder.h"
 #include "UDPSocket.h"

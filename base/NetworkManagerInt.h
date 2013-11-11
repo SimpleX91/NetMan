@@ -1,8 +1,8 @@
 #ifndef NETWORKMANAGER_INT
 #define NETWORKMANAGER_INT
 #include "InternalAbstract.h"
-#include "NetworkManager/BSDWinDiff.h"
-#include "NetworkManager/Reactor.h"
+#include "BSDWinDiff.h"
+#include "Reactor.h"
 #include <map>
 
 /** TODO: Need to delete InternalConnection

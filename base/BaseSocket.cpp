@@ -1,7 +1,7 @@
 #include "BaseSocket.h"
 #include "SocketAddress.h"
-#include "NetworkManager/ByteArray.h"
-#include "NetworkManager/Exception.h"
+#include "ByteArray.h"
+#include "Exception.h"
 
 namespace netman
 {

@@ -1,4 +1,4 @@
-#include "NetworkManager/Connection.h"
+#include "Connection.h"
 #include "InternalConnection.h"
 #include "NetworkManagerInt.h"
 

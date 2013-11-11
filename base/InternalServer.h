@@ -3,7 +3,7 @@
 #include "InternalAbstract.h"
 #include "BaseSocket.h"
 #include "TCPServer.h"
-#include "NetworkManager/Server.h"
+#include "Server.h"
 
 namespace netman
 {

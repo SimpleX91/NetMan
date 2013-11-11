@@ -1,4 +1,4 @@
-#include "NetworkManager/ByteArray.h"
+#include "ByteArray.h"
 #include "cstring"
 
 #include <string>

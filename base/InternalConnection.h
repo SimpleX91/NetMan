@@ -1,7 +1,7 @@
 #ifndef INTERNALCONNECTION_H
 #define INTERNALCONNECTION_H
 
-#include "NetworkManager/ByteArray.h"
+#include "ByteArray.h"
 #include "InternalAbstract.h"
 
 namespace netman

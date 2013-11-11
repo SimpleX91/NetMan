@@ -2,8 +2,6 @@ cmake_minimum_required(VERSION 2.8)
 
 project(netmanager)
 
-set(CMAKE_BUILD_TYPE Debug)
-
 if (CMAKE_SYSTEM_NAME STREQUAL "Windows")
   set(OS_WINDOWS TRUE)
 elseif (CMAKE_SYSTEM_NAME STREQUAL "Linux")
@@ -26,15 +24,16 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/lib")
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/bin")
 
 #Подключаем директорию с заголовочниками:
-include_directories(${CMAKE_SOURCE_DIR}/Include)
-file(GLOB_RECURSE HEADERS_LIST "${CMAKE_SOURCE_DIR}/Include/*.h")
+include_directories(${CMAKE_SOURCE_DIR}/include)
+include_directories(${CMAKE_SOURCE_DIR}/include/netman)
+file(GLOB_RECURSE HEADERS_LIST "${CMAKE_SOURCE_DIR}/include/*.h")
 
-aux_source_directory(${CMAKE_SOURCE_DIR}/Base SRC_LIST)
+aux_source_directory(${CMAKE_SOURCE_DIR}/base SRC_LIST)
 
 if(OS_WINDOWS)
-  set(REACTOR_SRC_LIST Reactor/SelectReactor.cpp)
+  set(REACTOR_SRC_LIST reactor/SelectReactor.cpp)
 elseif(OS_LINUX)
-  set(REACTOR_SRC_LIST Reactor/EpollReactor.cpp)
+  set(REACTOR_SRC_LIST reactor/EpollReactor.cpp)
 endif()
 
 #Сборка билиотеки

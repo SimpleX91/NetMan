@@ -1,5 +1,5 @@
 #include "InternalServer.h"
-#include "NetworkManager/Exception.h"
+#include "Exception.h"
 #include "SocketAddressBuilder.h"
 #include "SocketAddress.h"
 #include "TCPSocket.h"

@@ -1,8 +1,8 @@
 #include "SocketAddressBuilder.h"
 #include <string>
-#include <NetworkManager/BSDWinDiff.h>
+#include <BSDWinDiff.h>
 #include "SocketAddress.h"
-#include "NetworkManager/HostAddress.h"
+#include "HostAddress.h"
 
 namespace netman
 {

@@ -1,7 +1,7 @@
 #ifndef SOCKETADDRESS_H
 #define SOCKETADDRESS_H
 
-#include "NetworkManager/BSDWinDiff.h"
+#include "BSDWinDiff.h"
 #include <string>
 
 namespace netman
