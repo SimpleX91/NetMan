@@ -18,9 +18,9 @@ class NetworkManagerInt;
  * @details Главный класс модуля NetworkManager, предоставляет пользовательский
  *          интерфейс для управление модулем и взаимодействия с ним
  */
-class NetworkManager : public NonCopyable
+class NetworkManager
 {
-  std::unique_ptr<NetworkManagerInt> nm_impl;
+  std::shared_ptr<NetworkManagerInt> nm_impl;
 public:
   NetworkManager();
   ~NetworkManager();
@@ -100,10 +100,18 @@ public:
    * @return Экземпляр объекта NetworkManager (синглетон)
    */
   static NetworkManager& instance() {
-    static NetworkManager instance_;
-    return instance_;
+    if (instance_ == nullptr)
+      instance_ = new NetworkManager();
+    return *instance_;
   }
+
+  static void shutdown() {
+    delete instance_;
+  }
+
+  static NetworkManager *instance_;
 };
+
 
 }
 
