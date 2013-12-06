@@ -6,6 +6,7 @@
 #include "assert.h"
 #include "sys/timerfd.h"
 #include "time.h"
+#include <fcntl.h>
 
 namespace netman
 {
@@ -22,7 +23,16 @@ void Reactor::setCycleMsTime(itimerspec* value, long time_ms)
 Reactor::Reactor(ReactorInterface* callbackInterface)
   : callback_interface(callbackInterface)
 {
+  struct epoll_event ev;
   epollFd = epoll_create1(0);
+
+  // Установка pipe для деструктора
+  pipe(pipeFds);
+  int flags = fcntl(pipeFds[Read], F_GETFL, 0);
+  fcntl(pipeFds[Write], F_SETFL, flags | O_NONBLOCK);
+  ev.events = EPOLLIN;
+  ev.data.fd = pipeFds[Read];
+  epoll_ctl(epollFd, EPOLL_CTL_ADD, pipeFds[Read], &ev);
 }
 
 Reactor::~Reactor()
@@ -40,9 +50,9 @@ bool Reactor::isStarted()
 
 void Reactor::Stop()
 {
-  //TODO: Добавить вылет из epoll_wait
   stop_thread_mutex.unlock();
-
+  char ch = '0';
+  write(pipeFds[Write], &ch, 1);
   if (thread.joinable())
     thread.join();
 }
@@ -196,6 +206,11 @@ void Reactor::Execute()
 
           //std::cerr << "Timer event: " << timerValue << std::endl;
           callback_interface->onTimerElapsed(fd);
+        } else if (fd == pipeFds[Read]) {
+          char ch;
+          int result = 1;
+          while (result > 0)
+            result = read(fd, &ch, 1);
         } else {
           assert(fdSet.find(fd) != fdSet.end() && "fdSet has not that fd");
           //std::cerr << "Read event!\n" << std::endl;

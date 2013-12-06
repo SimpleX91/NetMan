@@ -100,9 +100,15 @@ protected:
   void setCycleMsTime(struct itimerspec* value, long time_ms);
 
 private:
+  enum Pipes {
+    Read = 0,
+    Write = 1
+  };
+
   std::thread thread;
   ReactorInterface* callback_interface;
   std::mutex stop_thread_mutex;
+  int pipeFds[2];
 
   fdSetTy fdSet;
   int epollFd;
