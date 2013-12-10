@@ -84,35 +84,6 @@ public:
 
 };
 
-
-/**
- * @brief Класс для создания строго одного экземпляра класса NetworkManager
- * @details Класс предназначен для использования в программах, в которых нужен
- *          только один экземпляр класса NetworkManager (синглетон)
- */
-class NMSingleton
-{
-  NMSingleton() = delete;
-  NMSingleton(const NMSingleton&) = delete;
-public:
-  /**
-   * @brief Получение экземпляра объекта класса NetworkManager
-   * @return Экземпляр объекта NetworkManager (синглетон)
-   */
-  static NetworkManager& instance() {
-    if (instance_ == nullptr)
-      instance_ = new NetworkManager();
-    return *instance_;
-  }
-
-  static void shutdown() {
-    delete instance_;
-  }
-
-  static NetworkManager *instance_;
-};
-
-
 }
 
 #endif
