@@ -5,6 +5,7 @@
 #include "SocketAddressBuilder.h"
 #include "UDPSocket.h"
 #include "assert.h"
+#include "Exception.h"
 
 namespace netman
 {
@@ -47,14 +48,14 @@ ByteArray UDPInternalConnection::receiveImpl(unsigned long size)
     if (!isPending())
       setPending();
     else
-      throw std::string("Already pending");
+      throw netman::SockConnectionError("Already pending");
 
     std::unique_lock<std::mutex> lock(syncMutex);
     waitVar.wait(lock, [&] {return !isPending();});
 
     if (isTimedOut()) {
       setIdle();
-      throw std::string("Operation timeout");
+      throw netman::SockRecieveFailed("Operation timeout");
     } else
       setIdle();
   }

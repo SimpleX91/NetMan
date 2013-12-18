@@ -1,5 +1,6 @@
 #include "TCPInternalConnection.h"
 #include "HostAddress.h"
+#include "Exception.h"
 #include "ByteArray.h"
 #include "SocketAddress.h"
 #include "SocketAddressBuilder.h"
@@ -44,9 +45,9 @@ ByteArray TCPInternalConnection::receiveImpl(unsigned long size)
     resetDone();
 
     if (isDisconnected())
-      throw std::string("Disconnected");
+      throw netman::SockConnectionLost("Disconnected");
     else if (isPending())
-      throw std::string("Already pending");
+      throw netman::SockConnectionError("Already pending");
     else
       setPending();
 
@@ -61,9 +62,9 @@ ByteArray TCPInternalConnection::receiveImpl(unsigned long size)
         setIdle();
     } else if (isTimedOut()) {
       setIdle();
-      throw std::string("Operation timeout");
+      throw netman::SockRecieveFailed("Operation timeout");
     } else if (isDisconnected()) {
-      throw std::string("Disconnected");
+      throw netman::SockConnectionLost("Disconnected");
     }
   }
 

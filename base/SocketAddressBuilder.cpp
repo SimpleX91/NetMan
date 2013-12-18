@@ -3,6 +3,7 @@
 #include <BSDWinDiff.h>
 #include "SocketAddress.h"
 #include "HostAddress.h"
+#include "Exception.h"
 
 namespace netman
 {
@@ -53,7 +54,7 @@ SocketAddress SocketAddressBuilder::getAddress_(const std::string& uri
 
   if (error != 0) {
     freeaddrinfo(result);
-    throw std::string("CouldNotResolveAddress");
+    throw netman::IpNotResolved("Couldn't resolve address");
   }
 
   // Лямбда-функция для поиска IP адреса нужной версии
@@ -77,7 +78,7 @@ SocketAddress SocketAddressBuilder::getAddress_(const std::string& uri
     reinterpret_cast<USockAddr*>(&storage)->port = htons(port);
   } else {
     freeaddrinfo(result);
-    throw std::string("IPAddressNotFound");
+    throw netman::IpNotResolved("IP Address Not Found");
   }
 
   freeaddrinfo(result);

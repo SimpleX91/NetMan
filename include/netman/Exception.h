@@ -121,6 +121,12 @@ public:
     : Exception(brief, details) {}
 };
 
+class IpNotResolved : public Exception
+{
+public:
+  IpNotResolved(const char* brief, const char* details = nullptr)
+    : Exception(brief, details) {}
+};
 }//NetworkManager
 
 #endif // EXCEPTION_H
